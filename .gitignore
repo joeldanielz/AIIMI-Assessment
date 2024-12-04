@@ -24,3 +24,9 @@ API/aiimi.employee.directory.api/bin/
 API/aiimi.employee.directory.api.tests/obj/
 
 API/aiimi.employee.directory.api.tests/aiimi.employee.directory.api.tests.csproj
+
+API/aiimi.employee.directory.api.tests/bin/Debug/net8.0/CoverletSourceRootsMapping_aiimi.employee.directory.api.tests
+
+API/aiimi.employee.directory.api.tests/bin/
+
+API/aiimi.employee.directory.api/aiimi.employee.directory.api.sln.DotSettings.user
