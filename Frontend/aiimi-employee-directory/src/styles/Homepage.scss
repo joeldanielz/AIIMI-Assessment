@@ -1,0 +1,17 @@
+.Container {
+  // Spacing & Sizing
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  min-width: 100vh;
+  padding-top: 2rem;
+  // Colour & Styling
+  background-color: #1a1a1a;
+}
+
+.Section {
+  width:50%;
+}
