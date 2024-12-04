@@ -2,7 +2,7 @@ import { useState } from "react";
 import { addEmployee } from "./employee-list/employeesSlice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
-import '../styles/NewEmployeeForm.scss'
+import "../styles/NewEmployeeForm.scss";
 
 const NewEmployeeForm = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -13,8 +13,32 @@ const NewEmployeeForm = () => {
     phone: "",
     email: "",
   });
+  const [errors, setErrors] = useState({ email: "", phone: "" }); // Validation errors
+
+  const validateEmailAddress = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhoneNumber = (phone: string): boolean => {
+    const ukPhoneRegex =
+      /^(\+44\s?7\d{3}|\(?07\d{3}\)?)\s?\d{3}\s?\d{3}$|^(020\s?\d{4}\s?\d{4}|01[2-9]\d{1,2}\s?\d{5,6}|0800\s?\d{6})$/;
+    return ukPhoneRegex.test(phone);
+  };
 
   const handleCreateEmployee = () => {
+    const emailAddressValid = validateEmailAddress(newEmployee.email);
+    const phoneNumberValid = validatePhoneNumber(newEmployee.phone);
+
+    if (!emailAddressValid || !phoneNumberValid) {
+      setErrors({
+        email: emailAddressValid ? "" : "Invalid email address.",
+        phone: phoneNumberValid ? "" : "Invalid phone number.",
+      });
+      return;
+    }
+
+    setErrors({ email: "", phone: "" });
     dispatch(addEmployee(newEmployee));
   };
 
@@ -23,7 +47,7 @@ const NewEmployeeForm = () => {
       <input
         type="text"
         placeholder="First Name"
-        style={{width: "40%"}}
+        style={{ width: "40%" }}
         className="Employee-Form-Text-Input"
         value={newEmployee.firstName}
         onChange={(e) =>
@@ -33,7 +57,7 @@ const NewEmployeeForm = () => {
       <input
         type="text"
         placeholder="Last Name"
-        style={{width: "40%"}}
+        style={{ width: "40%" }}
         className="Employee-Form-Text-Input"
         value={newEmployee.lastName}
         onChange={(e) =>
@@ -43,7 +67,7 @@ const NewEmployeeForm = () => {
       <input
         type="text"
         placeholder="Job Title"
-        style={{width: "30%"}}
+        style={{ width: "30%" }}
         className="Employee-Form-Text-Input"
         value={newEmployee.jobTitle}
         onChange={(e) =>
@@ -53,7 +77,7 @@ const NewEmployeeForm = () => {
       <input
         type="text"
         placeholder="Phone"
-        style={{width: "30%"}}
+        style={{ width: "30%" }}
         className="Employee-Form-Text-Input"
         value={newEmployee.phone}
         onChange={(e) =>
@@ -63,14 +87,20 @@ const NewEmployeeForm = () => {
       <input
         type="email"
         placeholder="Email"
-        style={{width: "30%"}}
+        style={{ width: "30%" }}
         className="Employee-Form-Text-Input"
         value={newEmployee.email}
         onChange={(e) =>
           setNewEmployee({ ...newEmployee, email: e.target.value })
         }
       />
-      <button className="Employee-Form-Button" onClick={handleCreateEmployee}>Create</button>
+      <button className="Employee-Form-Button" onClick={handleCreateEmployee}>
+        Create
+      </button>
+      <div className="Error-Message-Container">
+        {errors.email && <p className="Error-Message">{errors.email}</p>}{" "}
+        {errors.phone && <p className="Error-Message">{errors.phone}</p>}{" "}
+      </div>
     </div>
   );
 };
