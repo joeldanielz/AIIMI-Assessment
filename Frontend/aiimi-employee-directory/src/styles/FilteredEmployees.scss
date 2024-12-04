@@ -1,0 +1,22 @@
+.Filtered-Employee-Container {
+  width: 100%;
+  text-align: start;
+  margin-top: 1rem;
+
+  background-color: white;
+  border: 1px solid #e6235c;
+  border-radius: 30px;
+}
+
+.Filtered-Employee-Option {
+  cursor: pointer;
+  border-radius: 30px;
+  padding-left: 1rem;
+  margin: 0;
+  padding:1rem;
+
+  &:hover {
+    background-color: lightgray;
+    cursor: pointer;
+  }
+}

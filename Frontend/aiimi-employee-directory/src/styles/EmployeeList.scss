@@ -1,0 +1,12 @@
+.Employee-List-Container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    
+    :hover {
+        background-color: #a1a1a1;
+        cursor: pointer;
+    }
+}

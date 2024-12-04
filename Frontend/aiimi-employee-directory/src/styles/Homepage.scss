@@ -1,0 +1,28 @@
+.Container {
+  // Spacing & Sizing
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  min-width: 100vh;
+  padding-top: 2rem;
+  // Colour & Styling
+  background-color: #1a1a1a;
+}
+
+.Section {
+  width: 50%;
+}
+
+.New-User-Button {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 30px;
+  padding: 1rem;
+
+  background-color: #e6235c;
+  color: white;
+  cursor: pointer;
+}
