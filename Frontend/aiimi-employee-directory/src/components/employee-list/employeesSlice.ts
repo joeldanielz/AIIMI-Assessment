@@ -1,10 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { EmployeeDTO } from "../../types/EmployeeDTO";
 import { AppThunk, RootState } from "../../store";
-import { addEmployeeApi, fetchEmployeesApi } from "../../services/EmployeeApiService";
+import {
+  addEmployeeApi,
+  fetchEmployeesApi,
+} from "../../services/EmployeeApiService";
 
 export interface EmployeesState {
   employees: EmployeeDTO[];
+  filteredEmployees: EmployeeDTO[];
   loading: boolean;
   error: any;
 }
@@ -35,6 +39,7 @@ export const addEmployee = createAsyncThunk<EmployeeDTO, EmployeeDTO>(
 
 const initialState: EmployeesState = {
   employees: [],
+  filteredEmployees: [],
   loading: true,
   error: null,
 };
@@ -42,7 +47,16 @@ const initialState: EmployeesState = {
 export const employeesSlice = createSlice({
   name: "employees",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    filterEmployees: (state, action) => {
+      const searchString = action.payload.toLowerCase();
+      state.filteredEmployees = state.employees.filter((employee) =>
+        `${employee.firstName.toLowerCase()} ${employee.lastName.toLowerCase()}`
+          .toLowerCase()
+          .includes(searchString)
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchEmployees.pending, (state) => {
@@ -74,3 +88,4 @@ export const employeesSlice = createSlice({
 
 export const selectEmployees = (state: RootState) => state.employees;
 export default employeesSlice.reducer;
+export const { filterEmployees } = employeesSlice.actions;

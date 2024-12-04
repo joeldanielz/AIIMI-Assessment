@@ -1,13 +1,23 @@
-import { useSelector } from "react-redux";
-import { selectEmployees } from "./employeesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchEmployees, selectEmployees } from "./employeesSlice";
 import Employee from "./Employee";
+import { useEffect } from "react";
+import { AppDispatch } from "../../store";
 import '../../styles/EmployeeList.scss'
 
 const EmployeeList = () => {
-  const { employees, loading, error } = useSelector(selectEmployees);
+  const dispatch = useDispatch<AppDispatch>();
+  const { filteredEmployees, loading, error } = useSelector(selectEmployees);
+
+  useEffect(() => {
+    dispatch(fetchEmployees());
+  }, [dispatch]);
+  
   return (
     <div className="Employee-List-Container">
-      {employees.map((employee, index) => (
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
+      {filteredEmployees.map((employee, index) => (
         <Employee key={`employee-${index}`} employee={employee}></Employee>
       ))}
     </div>
