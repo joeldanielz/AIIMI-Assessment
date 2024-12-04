@@ -4,15 +4,22 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
 import "../styles/NewEmployeeForm.scss";
 
-const NewEmployeeForm = () => {
+interface NewEmployeeFormProps{
+  setIsFormVisible : (isFormVisible : boolean) => void;
+}
+
+const NewEmployeeForm = (props: NewEmployeeFormProps) => {
   const dispatch = useDispatch<AppDispatch>();
-  const [newEmployee, setNewEmployee] = useState({
+
+  const defaultEmployee = {
     firstName: "",
     lastName: "",
     jobTitle: "",
     phone: "",
     email: "",
-  });
+  };
+
+  const [newEmployee, setNewEmployee] = useState(defaultEmployee);
   const [errors, setErrors] = useState({ email: "", phone: "" }); // Validation errors
 
   const validateEmailAddress = (email: string): boolean => {
@@ -40,6 +47,8 @@ const NewEmployeeForm = () => {
 
     setErrors({ email: "", phone: "" });
     dispatch(addEmployee(newEmployee));
+    setNewEmployee(defaultEmployee);
+    props.setIsFormVisible(false);
   };
 
   return (
