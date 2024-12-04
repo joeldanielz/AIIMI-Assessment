@@ -13,6 +13,10 @@
 
 .Section {
   width: 50%;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 }
 
 .New-User-Button {
