@@ -23,6 +23,6 @@ namespace aiimi.employee.directory.api.BusinessLayer.Interfaces
         /// </summary>
         /// <param name="employee">The employee.</param>
         /// <returns>The <see cref="Task"/></returns>
-        Task AddEmployee(EmployeeDto employee);
+        Task<EmployeeDto> AddEmployee(EmployeeDto employee);
     }
 }

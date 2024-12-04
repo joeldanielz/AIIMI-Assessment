@@ -1,0 +1,26 @@
+.Search-Bar-Container {
+  display: flex;
+  width: 100%;
+
+  .Search-Bar-Input {
+    background-color: white;
+
+    width: 90%;
+    height: 2rem;
+
+    border: 0;
+    border-radius: 15px 0px 0px 15px;
+    padding: 0 0 0 1rem;
+  }
+
+  .Search-Bar-Button {
+    color: white;
+    height: 2rem;
+    width: 10%;
+    background-color: #e6235c;
+    border: 1px solid white;
+    border-radius: 0px 15px 15px 0px;
+    cursor: pointer;
+    padding: 0;
+  }
+}

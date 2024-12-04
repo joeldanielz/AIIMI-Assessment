@@ -64,9 +64,9 @@ namespace aiimi.employee.directory.api.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(EmployeeRequestDto employee)
         {
-            await this._employeeDataService.AddEmployee(this._mapper.Map<EmployeeDto>(employee)).ConfigureAwait(false);
+            var createdEmployee = await this._employeeDataService.AddEmployee(this._mapper.Map<EmployeeDto>(employee)).ConfigureAwait(false);
 
-            return Ok();
+            return Ok(createdEmployee);
         }
     }
 }
