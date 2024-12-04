@@ -1,0 +1,14 @@
+.Toast-Container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right:3rem;
+  top: 3rem;
+  width: 10rem;
+  height: 3rem;
+
+  background-color: #e6235c;
+  color: white;
+  border-radius: 30px;
+}

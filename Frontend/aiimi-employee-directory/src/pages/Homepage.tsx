@@ -7,6 +7,7 @@ import { AppDispatch } from "../store";
 import NewEmployeeForm from "../components/NewEmployeeForm";
 import { useState } from "react";
 import FilteredEmployees from "../components/FilteredEmployees";
+import Toast from "../components/toast/Toast";
 
 // Probably have some sort of useEffect here and retrieve the list of components.
 
@@ -32,6 +33,7 @@ const Homepage = () => {
         >
           {!isFormVisible ? <>New User +</> : <>Close Form</>}
         </button>
+        <Toast></Toast>
       </div>
     </div>
   );
