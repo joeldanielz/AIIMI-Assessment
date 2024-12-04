@@ -4,15 +4,14 @@ import SearchBar from "../components/SearchBar";
 import "../styles/Homepage.scss";
 import { addEmployee } from "../components/employee-list/employeesSlice";
 import { AppDispatch } from "../store";
+import NewEmployeeForm from "../components/NewEmployeeForm";
+import { useState } from "react";
 
 // Probably have some sort of useEffect here and retrieve the list of components.
 
 const Homepage = () => {
   const dispatch = useDispatch<AppDispatch>();
-  
-  function test() {
-    dispatch(addEmployee({firstName: "joel", lastName: "danielz", jobTitle: "dev", phone: "07983808138", email: "joedanielz@hotmail.com"})); // Dispatch the `add` action
-  }
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   return (
     // Container for overall layout
@@ -21,7 +20,8 @@ const Homepage = () => {
       <div className="Section">
         <SearchBar />
         <EmployeeList />
-        <button onClick={test}>clickme</button>
+        {isFormVisible? <NewEmployeeForm /> : <></>}
+        <button className="New-User-Button" onClick={() => setIsFormVisible(!isFormVisible)}>New User +</button>
       </div>
     </div>
   );

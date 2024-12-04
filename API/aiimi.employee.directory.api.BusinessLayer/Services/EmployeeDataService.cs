@@ -70,6 +70,7 @@ namespace aiimi.employee.directory.api.BusinessLayer.Services
                 using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
                 {
                     csv.WriteRecord(employee); // Write the employee record to the CSV file.
+                    csv.NextRecord();
                 }
             }
             catch (IOException ex)
