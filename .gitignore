@@ -20,3 +20,7 @@ API/aiimi.employee.directory.api.BusinessLayer/aiimi.employee.directory.api.Busi
 API/aiimi.employee.directory.api.BusinessLayer/obj/
 
 API/aiimi.employee.directory.api/bin/
+
+API/aiimi.employee.directory.api.tests/obj/
+
+API/aiimi.employee.directory.api.tests/aiimi.employee.directory.api.tests.csproj
