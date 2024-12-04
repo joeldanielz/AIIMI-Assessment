@@ -7,7 +7,7 @@ import '../../styles/EmployeeList.scss'
 
 const EmployeeList = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { filteredEmployees, loading, error } = useSelector(selectEmployees);
+  const { selectedEmployees, loading, error } = useSelector(selectEmployees);
 
   useEffect(() => {
     dispatch(fetchEmployees());
@@ -17,7 +17,7 @@ const EmployeeList = () => {
     <div className="Employee-List-Container">
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {filteredEmployees.map((employee, index) => (
+      {selectedEmployees.map((employee, index) => (
         <Employee key={`employee-${index}`} employee={employee}></Employee>
       ))}
     </div>

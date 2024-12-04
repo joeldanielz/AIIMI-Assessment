@@ -6,11 +6,11 @@ import { addEmployee } from "../components/employee-list/employeesSlice";
 import { AppDispatch } from "../store";
 import NewEmployeeForm from "../components/NewEmployeeForm";
 import { useState } from "react";
+import FilteredEmployees from "../components/FilteredEmployees";
 
 // Probably have some sort of useEffect here and retrieve the list of components.
 
 const Homepage = () => {
-  const dispatch = useDispatch<AppDispatch>();
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   return (
@@ -19,9 +19,15 @@ const Homepage = () => {
       {/* Section for narrower layout. */}
       <div className="Section">
         <SearchBar />
+        <FilteredEmployees />
         <EmployeeList />
-        {isFormVisible? <NewEmployeeForm /> : <></>}
-        <button className="New-User-Button" onClick={() => setIsFormVisible(!isFormVisible)}>New User +</button>
+        {isFormVisible ? <NewEmployeeForm /> : <></>}
+        <button
+          className="New-User-Button"
+          onClick={() => setIsFormVisible(!isFormVisible)}
+        >
+          New User +
+        </button>
       </div>
     </div>
   );

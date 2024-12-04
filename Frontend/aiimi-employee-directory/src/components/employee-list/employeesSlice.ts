@@ -9,6 +9,7 @@ import {
 export interface EmployeesState {
   employees: EmployeeDTO[];
   filteredEmployees: EmployeeDTO[];
+  selectedEmployees: EmployeeDTO[];
   loading: boolean;
   error: any;
 }
@@ -40,7 +41,8 @@ export const addEmployee = createAsyncThunk<EmployeeDTO, EmployeeDTO>(
 const initialState: EmployeesState = {
   employees: [],
   filteredEmployees: [],
-  loading: true,
+  selectedEmployees: [],
+  loading: false,
   error: null,
 };
 
@@ -55,6 +57,23 @@ export const employeesSlice = createSlice({
           .toLowerCase()
           .includes(searchString)
       );
+    },
+    clearFilterEmployees: (state) => {
+      state.filteredEmployees = [];
+    },
+    selectEmployee: (state, action) => {
+      const exists = state.selectedEmployees.find(
+        (employee) =>
+          employee.firstName === action.payload.firstName &&
+          employee.lastName === action.payload.lastName &&
+          employee.jobTitle === action.payload.jobTitle &&
+          employee.phone === action.payload.phone &&
+          employee.email === action.payload.email
+      );
+
+      if (!exists) {
+        state.selectedEmployees.push(action.payload);
+      }
     },
   },
   extraReducers: (builder) => {
@@ -88,4 +107,5 @@ export const employeesSlice = createSlice({
 
 export const selectEmployees = (state: RootState) => state.employees;
 export default employeesSlice.reducer;
-export const { filterEmployees } = employeesSlice.actions;
+export const { filterEmployees, selectEmployee, clearFilterEmployees } =
+  employeesSlice.actions;
