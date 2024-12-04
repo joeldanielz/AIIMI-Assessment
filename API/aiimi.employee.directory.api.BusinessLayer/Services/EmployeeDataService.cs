@@ -62,7 +62,7 @@ namespace aiimi.employee.directory.api.BusinessLayer.Services
         /// <param name="employee">The <see cref="EmployeeDto"/> object representing the new employee to add.</param>
         /// <returns>An asynchronous task representing the operation.</returns>
         /// <exception cref="IOException">Thrown if there is an issue writing to the file.</exception>
-        public Task AddEmployee(EmployeeDto employee)
+        public async Task<EmployeeDto> AddEmployee(EmployeeDto employee)
         {
             try
             {
@@ -78,7 +78,7 @@ namespace aiimi.employee.directory.api.BusinessLayer.Services
                 throw new IOException("Error writing to the employee data file.", ex);
             }
 
-            return Task.CompletedTask;
+            return await Task.FromResult(employee);
         }
     }
 }
