@@ -5,8 +5,8 @@ import { AppDispatch } from "../store";
 import "../styles/NewEmployeeForm.scss";
 import { showToast } from "./toast/toastSlice";
 
-interface NewEmployeeFormProps{
-  setIsFormVisible : (isFormVisible : boolean) => void;
+interface NewEmployeeFormProps {
+  setIsFormVisible: (isFormVisible: boolean) => void;
 }
 
 const NewEmployeeForm = (props: NewEmployeeFormProps) => {
@@ -47,10 +47,12 @@ const NewEmployeeForm = (props: NewEmployeeFormProps) => {
     }
 
     setErrors({ email: "", phone: "" });
-    dispatch(addEmployee(newEmployee));
+    dispatch(addEmployee(newEmployee)).then(() => {
+      dispatch(showToast("New user added!"));
+    });
+
     setNewEmployee(defaultEmployee);
     props.setIsFormVisible(false);
-    dispatch(showToast("New user added!"));
   };
 
   return (
