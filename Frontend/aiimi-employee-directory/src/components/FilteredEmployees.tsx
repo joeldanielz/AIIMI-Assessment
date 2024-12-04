@@ -1,4 +1,5 @@
 import {
+  clearFilterEmployees,
   filterEmployees,
   selectEmployee,
   selectEmployees,
@@ -14,15 +15,25 @@ const FilteredEmployees = () => {
 
   function selectEmployeeFromList(employee: EmployeeDTO) {
     dispatch(selectEmployee(employee));
+    dispatch(clearFilterEmployees());
   }
 
-  return (
-    <div className="Filtered-Employee-Container">
-      {filteredEmployees.map((employee, index) => (
-        <p onClick={(e) => selectEmployeeFromList(employee)} className="Filtered-Employee-Option">{employee.firstName} {employee.lastName}</p>
-      ))}
-    </div>
-  );
+  if (filteredEmployees.length > 0) {
+    return (
+      <div className="Filtered-Employee-Container">
+        {filteredEmployees.map((employee, index) => (
+          <p
+            onClick={(e) => selectEmployeeFromList(employee)}
+            className="Filtered-Employee-Option"
+          >
+            {employee.firstName} {employee.lastName}
+          </p>
+        ))}
+      </div>
+    );
+  } else {
+    return <></>;
+  }
 };
 
 export default FilteredEmployees;

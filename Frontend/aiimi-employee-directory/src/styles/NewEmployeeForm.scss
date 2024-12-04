@@ -5,7 +5,6 @@
 	justify-content: space-around;
 	width: 100%;
 	border-radius: 30px;
-	height: 15rem;
 	border: 1px solid;
 	margin-top: 2rem;
 
@@ -30,4 +29,9 @@
 	cursor: pointer;
 	background-color: #e6235c;
 	border-color: #a1a1a1;
+}
+
+.Error-Message-Container{
+	width: 100%;
+	color: red;
 }

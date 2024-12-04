@@ -10,12 +10,13 @@
 
 .Filtered-Employee-Option {
   cursor: pointer;
-
+  border-radius: 30px;
   padding-left: 1rem;
+  margin: 0;
+  padding:1rem;
 
-  :hover {
-    background-color: green;
-    color: green;
+  &:hover {
+    background-color: lightgray;
     cursor: pointer;
   }
 }

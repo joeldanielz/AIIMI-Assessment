@@ -21,12 +21,16 @@ const Homepage = () => {
         <SearchBar />
         <FilteredEmployees />
         <EmployeeList />
-        {isFormVisible ? <NewEmployeeForm /> : <></>}
+        {isFormVisible ? (
+          <NewEmployeeForm setIsFormVisible={setIsFormVisible} />
+        ) : (
+          <></>
+        )}
         <button
           className="New-User-Button"
           onClick={() => setIsFormVisible(!isFormVisible)}
         >
-          New User +
+          {!isFormVisible ? <>New User +</> : <>Close Form</>}
         </button>
       </div>
     </div>
