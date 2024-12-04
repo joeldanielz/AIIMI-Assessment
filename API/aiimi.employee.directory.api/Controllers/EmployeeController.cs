@@ -47,7 +47,7 @@ namespace aiimi.employee.directory.api.Controllers
         /// Retrieves a collection of employees.
         /// </summary>
         /// <returns>An enumerable collection of <see cref="EmployeeRequestDto"/> objects.</returns>
-        /// <exception cref="NotImplementedException">Thrown when the method is not implemented.</exception>
+        /// <returns>The <see cref="Task"/>.</returns>
         [HttpGet]
         public async Task<IEnumerable<EmployeeRequestDto>> Get()
         {
@@ -60,7 +60,7 @@ namespace aiimi.employee.directory.api.Controllers
         /// Creates new employee records.
         /// </summary>
         /// <returns>An enumerable collection of newly created <see cref="EmployeeRequestDto"/> objects.</returns>
-        /// <exception cref="NotImplementedException">Thrown when the method is not implemented.</exception>
+        /// <returns>The <see cref="Task"/>.</returns>
         [HttpPost]
         public async Task<IActionResult> Create(EmployeeRequestDto employee)
         {
