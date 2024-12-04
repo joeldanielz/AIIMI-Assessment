@@ -15,8 +15,8 @@ const EmployeeList = () => {
   
   return (
     <div className="Employee-List-Container">
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {loading && <p className="Employee-List-Loading">Loading...</p>}
+      {error && <p className="Employee-List-Error">{error}</p>}
       {selectedEmployees.map((employee, index) => (
         <Employee key={`employee-${index}`} employee={employee}></Employee>
       ))}
