@@ -6,7 +6,6 @@
   align-items: center;
   text-align: center;
   min-height: 100vh;
-  min-width: 100vh;
   padding-top: 2rem;
   // Colour & Styling
   background-color: #1a1a1a;
@@ -14,6 +13,10 @@
 
 .Section {
   width: 50%;
+
+  @media (max-width: 768px) {
+    width: 80%;
+  }
 }
 
 .New-User-Button {
