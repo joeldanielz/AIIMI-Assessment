@@ -14,9 +14,6 @@ const Toast = () => {
           <p>{toastText}</p>
         </div>
       )}
-      <button onClick={() => dispatch(showToast("New user added!"))}>
-        Show Toast
-      </button>
     </>
   );
 }
