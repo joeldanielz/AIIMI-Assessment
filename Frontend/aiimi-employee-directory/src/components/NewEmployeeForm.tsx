@@ -3,6 +3,7 @@ import { addEmployee } from "./employee-list/employeesSlice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
 import "../styles/NewEmployeeForm.scss";
+import { showToast } from "./toast/toastSlice";
 
 interface NewEmployeeFormProps{
   setIsFormVisible : (isFormVisible : boolean) => void;
@@ -49,6 +50,7 @@ const NewEmployeeForm = (props: NewEmployeeFormProps) => {
     dispatch(addEmployee(newEmployee));
     setNewEmployee(defaultEmployee);
     props.setIsFormVisible(false);
+    dispatch(showToast("New user added!"));
   };
 
   return (
