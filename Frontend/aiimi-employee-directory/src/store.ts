@@ -1,10 +1,12 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 import employeesReducer from "./components/employee-list/employeesSlice";
+import toastReducer from "./components/toast/toastSlice";
 
 export const store = configureStore({
   reducer: {
     employees: employeesReducer,
+    toast: toastReducer,
   },
 });
 
