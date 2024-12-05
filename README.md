@@ -8,7 +8,7 @@
 1. Please open **Visual Studio 2022** or any compatible IDE.
 2. Navigate to the following directory: \AIIMI-Assessment\API\aiimi.employee.directory.api\
 3. Open the solution file. `aiimi.employee.directory.api.sln`
-4. Open the **Solution Explorer** if you haven't already. Right-click on the `aiimi.employee.directory.api.sln` project and select **Set as Startup Project**.
+4. Open the **Solution Explorer** if you haven't already. Right-click on the `aiimi.employee.directory.api` project in the API folder and select **Set as Startup Project**.
 4. Now run the project:
 - Run the project by pressing `F5` or click the **Start** button in Visual Studio to launch the API.
 
